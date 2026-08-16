@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1280" viewBox="0 0 1920 1280" role="img" aria-labelledby="title desc">
+  <title id="title">分层智能架构：业务意图、世界模型与受控执行</title>
+  <desc id="desc">飞书 Aily、AgentOS、世界模型和技能小脑与安全执行层组成的四层工业智能架构。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071521"/>
+      <stop offset="1" stop-color="#0a2030"/>
+    </linearGradient>
+    <linearGradient id="wmGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#123449"/>
+      <stop offset="1" stop-color="#0d293b"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#00101b" flood-opacity="0.5"/>
+    </filter>
+    <marker id="arrowBlue" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#4aa8ff"/>
+    </marker>
+    <marker id="arrowCyan" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#3bd5e8"/>
+    </marker>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; }
+      .eyebrow { fill: #3bd5e8; font-size: 22px; font-weight: 700; letter-spacing: 2px; }
+      .title { fill: #f5f9fc; font-size: 50px; font-weight: 800; }
+      .subtitle { fill: #a9bbc8; font-size: 24px; }
+      .layer-title { fill: #f6fafc; font-size: 31px; font-weight: 760; }
+      .role { fill: #a9bbc8; font-size: 21px; }
+      .chip { fill: #dbe8ef; font-size: 20px; font-weight: 620; }
+      .number { fill: #06131e; font-size: 26px; font-weight: 850; text-anchor: middle; dominant-baseline: middle; }
+      .side-title { fill: #55dceb; font-size: 25px; font-weight: 760; }
+      .side-body { fill: #d7e4ec; font-size: 21px; }
+      .side-small { fill: #9fb4c2; font-size: 19px; }
+      .boundary-title { fill: #f5f9fc; font-size: 23px; font-weight: 760; }
+      .boundary { fill: #bed0dc; font-size: 20px; }
+      .badge { fill: #06131e; font-size: 18px; font-weight: 760; text-anchor: middle; dominant-baseline: middle; }
+    </style>
+  </defs>
+
+  <rect width="1920" height="1280" fill="url(#bg)"/>
+  <circle cx="1760" cy="-40" r="260" fill="#123449" opacity="0.38"/>
+  <circle cx="1860" cy="80" r="170" fill="#0b5863" opacity="0.16"/>
+
+  <text x="80" y="64" class="eyebrow">鹰之团 · 方案附图 C</text>
+  <text x="80" y="125" class="title">分层智能架构：业务意图 → 后果预测 → 受控执行</text>
+  <text x="80" y="166" class="subtitle">大脑做任务与预测，小脑做确定性执行，安全层始终拥有独立否决权</text>
+
+  <!-- Layer 01 -->
+  <g filter="url(#shadow)">
+    <rect x="80" y="205" width="1320" height="180" rx="24" fill="#0f2b3e" stroke="#4aa8ff" stroke-width="2"/>
+    <circle cx="135" cy="250" r="34" fill="#4aa8ff"/>
+    <text x="135" y="250" class="number">01</text>
+    <text x="190" y="255" class="layer-title">飞书 Aily 交互入口</text>
+    <rect x="1110" y="226" width="245" height="42" rx="21" fill="#4aa8ff"/>
+    <text x="1232" y="247" class="badge">业务意图结构化</text>
+    <text x="190" y="292" class="role">自然语言任务 → 约束确认 → 结构化任务意图</text>
+    <rect x="190" y="317" width="330" height="45" rx="12" fill="#091a27" stroke="#26485e"/>
+    <rect x="550" y="317" width="330" height="45" rx="12" fill="#091a27" stroke="#26485e"/>
+    <rect x="910" y="317" width="390" height="45" rx="12" fill="#091a27" stroke="#26485e"/>
+    <text x="355" y="347" text-anchor="middle" class="chip">自然语言任务解析</text>
+    <text x="715" y="347" text-anchor="middle" class="chip">时效 / 优先级 / 位置约束</text>
+    <text x="1105" y="347" text-anchor="middle" class="chip">身份、风险与完成条件确认</text>
+  </g>
+
+  <line x1="740" y1="387" x2="740" y2="420" stroke="#4aa8ff" stroke-width="5" marker-end="url(#arrowBlue)"/>
+  <text x="762" y="410" class="side-small">任务 Schema</text>
+
+  <!-- Layer 02 -->
+  <g filter="url(#shadow)">
+    <rect x="80" y="425" width="1320" height="180" rx="24" fill="#102f40" stroke="#36c7df" stroke-width="2"/>
+    <circle cx="135" cy="470" r="34" fill="#36c7df"/>
+    <text x="135" y="470" class="number">02</text>
+    <text x="190" y="475" class="layer-title">AgentOS 任务大脑</text>
+    <rect x="1110" y="446" width="245" height="42" rx="21" fill="#36c7df"/>
+    <text x="1232" y="467" class="badge">任务图与执行预算</text>
+    <text x="190" y="512" class="role">任务意图 → 候选技能链 → 有限预算编排</text>
+    <rect x="190" y="537" width="330" height="45" rx="12" fill="#091a27" stroke="#265163"/>
+    <rect x="550" y="537" width="330" height="45" rx="12" fill="#091a27" stroke="#265163"/>
+    <rect x="910" y="537" width="390" height="45" rx="12" fill="#091a27" stroke="#265163"/>
+    <text x="355" y="567" text-anchor="middle" class="chip">任务图 + 九技能白名单</text>
+    <text x="715" y="567" text-anchor="middle" class="chip">状态记忆 / Scene Graph</text>
+    <text x="1105" y="567" text-anchor="middle" class="chip">Fallback 策略与重试上限</text>
+  </g>
+
+  <line x1="740" y1="607" x2="740" y2="640" stroke="#3bd5e8" stroke-width="5" marker-end="url(#arrowCyan)"/>
+  <text x="762" y="630" class="side-small">候选技能 + 约束</text>
+
+  <!-- Layer 03 -->
+  <g filter="url(#shadow)">
+    <rect x="80" y="645" width="1320" height="180" rx="24" fill="url(#wmGlow)" stroke="#3bd5e8" stroke-width="3"/>
+    <circle cx="135" cy="690" r="34" fill="#3bd5e8"/>
+    <text x="135" y="690" class="number">03</text>
+    <text x="190" y="695" class="layer-title">世界模型预测层</text>
+    <rect x="1110" y="666" width="245" height="42" rx="21" fill="#3bd5e8"/>
+    <text x="1232" y="687" class="badge">预测而非直接控制</text>
+    <text x="190" y="732" class="role">当前状态 + 候选技能 → 下一状态、成功、风险与不确定性</text>
+    <rect x="190" y="757" width="330" height="45" rx="12" fill="#091a27" stroke="#2e6974"/>
+    <rect x="550" y="757" width="330" height="45" rx="12" fill="#091a27" stroke="#2e6974"/>
+    <rect x="910" y="757" width="390" height="45" rx="12" fill="#091a27" stroke="#2e6974"/>
+    <text x="355" y="787" text-anchor="middle" class="chip">融合观测 / 设备 / 历史</text>
+    <text x="715" y="787" text-anchor="middle" class="chip">候选后果与风险比较</text>
+    <text x="1105" y="787" text-anchor="middle" class="chip">输出技能建议 + 目标参数</text>
+  </g>
+
+  <line x1="740" y1="827" x2="740" y2="860" stroke="#4aa8ff" stroke-width="5" marker-end="url(#arrowBlue)"/>
+  <text x="762" y="850" class="side-small">低风险候选</text>
+
+  <!-- Layer 04 -->
+  <g filter="url(#shadow)">
+    <rect x="80" y="865" width="1320" height="180" rx="24" fill="#102f3b" stroke="#3dd48a" stroke-width="2"/>
+    <circle cx="135" cy="910" r="34" fill="#3dd48a"/>
+    <text x="135" y="910" class="number">04</text>
+    <text x="190" y="915" class="layer-title">技能小脑与安全执行层</text>
+    <rect x="1110" y="886" width="245" height="42" rx="21" fill="#3dd48a"/>
+    <text x="1232" y="907" class="badge">确定执行 + 独立门禁</text>
+    <text x="190" y="952" class="role">目标参数 → 物理执行 → 接触验证 → 安全停车</text>
+    <rect x="190" y="977" width="330" height="45" rx="12" fill="#091a27" stroke="#285a4d"/>
+    <rect x="550" y="977" width="330" height="45" rx="12" fill="#091a27" stroke="#285a4d"/>
+    <rect x="910" y="977" width="390" height="45" rx="12" fill="#091a27" stroke="#285a4d"/>
+    <text x="355" y="1007" text-anchor="middle" class="chip">M4 规控 / Isaac 物理执行</text>
+    <text x="715" y="1007" text-anchor="middle" class="chip">OBB / SAT 扫掠守卫</text>
+    <text x="1105" y="1007" text-anchor="middle" class="chip">接触、速度与人员安全门禁</text>
+  </g>
+
+  <!-- Feedback loop -->
+  <path d="M1398 955 H1434 V735 H1406" fill="none" stroke="#3bd5e8" stroke-width="4" stroke-dasharray="11 9" marker-end="url(#arrowCyan)"/>
+  <rect x="1252" y="835" width="172" height="40" rx="20" fill="#0a2332" stroke="#3bd5e8"/>
+  <text x="1338" y="862" text-anchor="middle" class="side-small">新观测 / 新状态</text>
+
+  <!-- Unified evidence sidebar -->
+  <g filter="url(#shadow)">
+    <rect x="1460" y="205" width="380" height="840" rx="24" fill="#091925" stroke="#27475a" stroke-width="2"/>
+    <text x="1500" y="255" class="side-title">飞书协同与单一证据链</text>
+    <text x="1500" y="292" class="side-small">一个运行 ID 串联决策与执行</text>
+
+    <line x1="1520" y1="345" x2="1520" y2="850" stroke="#2f6874" stroke-width="4"/>
+    <circle cx="1520" cy="350" r="10" fill="#4aa8ff"/>
+    <circle cx="1520" cy="450" r="10" fill="#36c7df"/>
+    <circle cx="1520" cy="550" r="10" fill="#3bd5e8"/>
+    <circle cx="1520" cy="650" r="10" fill="#ffb23e"/>
+    <circle cx="1520" cy="750" r="10" fill="#3dd48a"/>
+    <circle cx="1520" cy="850" r="10" fill="#f5f9fc"/>
+
+    <text x="1550" y="357" class="side-body">任务意图</text>
+    <text x="1550" y="388" class="side-small">Aily / 多维表格</text>
+    <text x="1550" y="457" class="side-body">任务图与预算</text>
+    <text x="1550" y="488" class="side-small">AgentOS / 技能库</text>
+    <text x="1550" y="557" class="side-body">世界模型预测</text>
+    <text x="1550" y="588" class="side-small">状态 / 风险 / 不确定性</text>
+    <text x="1550" y="657" class="side-body">技能与 Fallback</text>
+    <text x="1550" y="688" class="side-small">白名单 / 恢复预算</text>
+    <text x="1550" y="757" class="side-body">视频与结构化事件</text>
+    <text x="1550" y="788" class="side-small">events.jsonl / simulation.mp4</text>
+    <text x="1550" y="857" class="side-body">Manifest 封存</text>
+    <text x="1550" y="888" class="side-small">哈希绑定 / 只读回放</text>
+
+    <rect x="1500" y="930" width="300" height="70" rx="16" fill="#102d3b" stroke="#3bd5e8"/>
+    <text x="1650" y="960" text-anchor="middle" class="side-body">任务 → 预测 → 技能 →</text>
+    <text x="1650" y="988" text-anchor="middle" class="side-body">Fallback → 视频 → Manifest</text>
+  </g>
+
+  <!-- Boundary strip -->
+  <rect x="80" y="1080" width="1760" height="140" rx="22" fill="#0d2938" stroke="#2f6474" stroke-width="2"/>
+  <rect x="104" y="1103" width="110" height="34" rx="17" fill="#3bd5e8"/>
+  <text x="159" y="1120" class="badge">能力边界</text>
+  <text x="240" y="1132" class="boundary-title">当前：显式世界模型 = 物理仿真 + Scene Graph + 状态机 + 碰撞预测 + 失败记忆</text>
+  <text x="240" y="1177" class="boundary">下一阶段：学习型世界模型：企业数据阶段（未训练，不作为现有成果）</text>
+  <text x="80" y="1255" class="side-small">颜色语义：蓝=业务与执行　青=世界模型　绿=验证通过　琥珀=恢复　红=安全介入</text>
+</svg>

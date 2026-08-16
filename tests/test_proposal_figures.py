@@ -56,6 +56,11 @@ class ProposalFigureContractTests(unittest.TestCase):
         ):
             self.assertIn(label, text)
 
+    def test_figure_d_feedback_route_avoids_the_subtitle_band(self):
+        text = self.svg_text("fig-D-九技能链与Fallback状态机.svg")
+        self.assertNotIn("V267 H255", text)
+        self.assertIn("V280 H255", text)
+
     def test_legacy_vla_layer_copy_is_absent(self):
         paths = (
             FIGURES / "fig-C-四层架构总览.svg",
@@ -65,7 +70,15 @@ class ProposalFigureContractTests(unittest.TestCase):
         )
         for path in paths:
             if path.exists():
-                self.assertNotIn("VLA / 执行层", path.read_text(encoding="utf-8"))
+                text = path.read_text(encoding="utf-8")
+                for legacy_copy in (
+                    "VLA / 执行层",
+                    "层次化 VLA 负责柔性决策",
+                    "层次化 VLA 只出技能参数",
+                    "AgentOS + 层次化 VLA",
+                    "小脑：层次化 VLA",
+                ):
+                    self.assertNotIn(legacy_copy, text)
 
     def test_png_outputs_are_at_least_1600_pixels_wide(self):
         for filename in (
@@ -75,6 +88,14 @@ class ProposalFigureContractTests(unittest.TestCase):
             data = (FIGURES / filename).read_bytes()
             self.assertEqual(data[:8], b"\x89PNG\r\n\x1a\n")
             self.assertGreaterEqual(struct.unpack(">I", data[16:20])[0], 1600)
+
+    def test_png_outputs_use_coregraphics_compatible_eight_bit_depth(self):
+        for filename in (
+            "fig-C-四层架构总览.png",
+            "fig-D-九技能链与Fallback状态机.png",
+        ):
+            data = (FIGURES / filename).read_bytes()
+            self.assertEqual(data[24], 8, f"{filename} must be exported with sips")
 
     def test_proposal_places_figure_c_before_figure_d(self):
         text = PROPOSAL.read_text(encoding="utf-8")

@@ -4,9 +4,9 @@
 
 **Goal:** Rebuild proposal figures C and D as precise, readable world-model infographics, synchronize the proposal copy, and publish the verified assets to the existing GitHub feature branch.
 
-**Architecture:** Keep editable SVG files as the single design source and render stable PNG deliverables with ImageMagick. A focused unittest contract validates required terminology, forbidden legacy labels, document placement, and PNG dimensions before visual QA.
+**Architecture:** Keep editable SVG files as the single design source and render stable PNG deliverables with macOS CoreGraphics through `sips`, which preserves Chinese glyph fallback. A focused unittest contract validates required terminology, forbidden legacy labels, document placement, PNG dimensions, and the 8-bit CoreGraphics export before visual QA.
 
-**Tech Stack:** SVG 1.1, ImageMagick 7, Python `unittest`, standard-library XML/PNG parsing, Markdown, Git.
+**Tech Stack:** SVG 1.1, macOS `sips`/CoreGraphics, ImageMagick 7 for PNG resizing only, Python `unittest`, standard-library XML/PNG parsing, Markdown, Git.
 
 ## Global Constraints
 
@@ -165,9 +165,8 @@ Add a bottom boundary strip with exact copy:
 Run:
 
 ```bash
-magick -background '#071521' \
-  '参赛方案/figures/fig-C-四层架构总览.svg' \
-  '参赛方案/figures/fig-C-四层架构总览.png'
+sips -s format png '参赛方案/figures/fig-C-四层架构总览.svg' \
+  --out '参赛方案/figures/fig-C-四层架构总览.png'
 ```
 
 - [ ] **Step 3: Run the Figure C focused tests**
@@ -225,9 +224,8 @@ Use exact terminal measurements `COMPLETED · 9/9 · 66.25 s`, `恢复后 COMPLE
 Run:
 
 ```bash
-magick -background '#071521' \
-  '参赛方案/figures/fig-D-九技能链与Fallback状态机.svg' \
-  '参赛方案/figures/fig-D-九技能链与Fallback状态机.png'
+sips -s format png '参赛方案/figures/fig-D-九技能链与Fallback状态机.svg' \
+  --out '参赛方案/figures/fig-D-九技能链与Fallback状态机.png'
 ```
 
 - [ ] **Step 3: Run all proposal-figure tests**

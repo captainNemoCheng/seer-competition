@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1280" viewBox="0 0 1920 1280" role="img" aria-labelledby="title desc">
+  <title id="title">世界模型闭环、九技能执行链与有限预算恢复</title>
+  <desc id="desc">九项叉车技能的正常执行、自动恢复和安全人工介入三条平行泳道。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071521"/>
+      <stop offset="1" stop-color="#091e2d"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#00101b" flood-opacity="0.48"/>
+    </filter>
+    <marker id="arrowBlue" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto">
+      <path d="M0,0 L11,5.5 L0,11 z" fill="#4aa8ff"/>
+    </marker>
+    <marker id="arrowCyan" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto">
+      <path d="M0,0 L11,5.5 L0,11 z" fill="#3bd5e8"/>
+    </marker>
+    <marker id="arrowAmber" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto">
+      <path d="M0,0 L11,5.5 L0,11 z" fill="#ffb23e"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto">
+      <path d="M0,0 L11,5.5 L0,11 z" fill="#ff5d68"/>
+    </marker>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; }
+      .eyebrow { fill: #3bd5e8; font-size: 22px; font-weight: 700; letter-spacing: 2px; }
+      .title { fill: #f5f9fc; font-size: 49px; font-weight: 800; }
+      .subtitle { fill: #a9bbc8; font-size: 23px; }
+      .loop-title { fill: #53e0ed; font-size: 23px; font-weight: 760; }
+      .loop-text { fill: #e4f0f5; font-size: 21px; font-weight: 650; text-anchor: middle; }
+      .lane-title { fill: #f4f9fb; font-size: 25px; font-weight: 760; }
+      .lane-sub { fill: #9fb4c2; font-size: 19px; }
+      .phase { fill: #9cccf2; font-size: 19px; font-weight: 720; text-anchor: middle; }
+      .skill-num { fill: #7dc5ff; font-size: 18px; font-weight: 800; text-anchor: middle; }
+      .skill-name { fill: #f3f8fb; font-size: 22px; font-weight: 740; text-anchor: middle; }
+      .skill-code { fill: #9eb4c2; font-size: 16px; font-weight: 650; text-anchor: middle; }
+      .node-title { fill: #f4f9fb; font-size: 22px; font-weight: 730; text-anchor: middle; }
+      .node-sub { fill: #a9bbc8; font-size: 18px; text-anchor: middle; }
+      .terminal { fill: #071521; font-size: 21px; font-weight: 850; text-anchor: middle; }
+      .legend { fill: #c8d7e0; font-size: 19px; }
+    </style>
+  </defs>
+
+  <rect width="1920" height="1280" fill="url(#bg)"/>
+  <circle cx="1810" cy="-20" r="260" fill="#123449" opacity="0.35"/>
+  <text x="80" y="62" class="eyebrow">鹰之团 · 方案附图 D</text>
+  <text x="80" y="123" class="title">世界模型闭环 × 九技能执行链 × 有限预算恢复</text>
+  <text x="80" y="163" class="subtitle">执行后重新观察；失败先更新世界状态，再在白名单与预算内恢复或安全转人工</text>
+
+  <!-- World-model loop -->
+  <g filter="url(#shadow)">
+    <rect x="80" y="195" width="1760" height="175" rx="24" fill="#0d2939" stroke="#3bd5e8" stroke-width="2"/>
+    <text x="120" y="235" class="loop-title">世界模型闭环</text>
+    <text x="120" y="268" class="lane-sub">每个技能后更新 Scene Graph、接触状态、风险与不确定性</text>
+
+    <rect x="120" y="292" width="270" height="55" rx="14" fill="#113b4c" stroke="#3bd5e8"/>
+    <rect x="450" y="292" width="270" height="55" rx="14" fill="#113b4c" stroke="#3bd5e8"/>
+    <rect x="780" y="292" width="270" height="55" rx="14" fill="#113b4c" stroke="#3bd5e8"/>
+    <rect x="1110" y="292" width="270" height="55" rx="14" fill="#113b4c" stroke="#3bd5e8"/>
+    <rect x="1440" y="292" width="270" height="55" rx="14" fill="#113b4c" stroke="#3bd5e8"/>
+    <text x="255" y="327" class="loop-text">观察状态</text>
+    <text x="585" y="327" class="loop-text">预测候选后果</text>
+    <text x="915" y="327" class="loop-text">选择白名单技能</text>
+    <text x="1245" y="327" class="loop-text">执行与验证</text>
+    <text x="1575" y="327" class="loop-text">更新状态</text>
+    <line x1="392" y1="320" x2="440" y2="320" stroke="#3bd5e8" stroke-width="4" marker-end="url(#arrowCyan)"/>
+    <line x1="722" y1="320" x2="770" y2="320" stroke="#3bd5e8" stroke-width="4" marker-end="url(#arrowCyan)"/>
+    <line x1="1052" y1="320" x2="1100" y2="320" stroke="#3bd5e8" stroke-width="4" marker-end="url(#arrowCyan)"/>
+    <line x1="1382" y1="320" x2="1430" y2="320" stroke="#3bd5e8" stroke-width="4" marker-end="url(#arrowCyan)"/>
+    <path d="M1712 319 H1788 V280 H255 V286" fill="none" stroke="#3bd5e8" stroke-width="3" stroke-dasharray="10 8" marker-end="url(#arrowCyan)"/>
+  </g>
+
+  <!-- Normal lane -->
+  <rect x="80" y="400" width="1760" height="250" rx="24" fill="#0b2231" stroke="#28516a" stroke-width="2"/>
+  <rect x="100" y="420" width="120" height="36" rx="18" fill="#4aa8ff"/>
+  <text x="160" y="445" class="terminal">正常执行</text>
+  <text x="240" y="446" class="lane-sub">九项技能逐步验证，只有谓词成立才推进</text>
+
+  <text x="326" y="476" class="phase">进入与感知</text>
+  <text x="830" y="476" class="phase">叉取</text>
+  <text x="1334" y="476" class="phase">转运与放置</text>
+  <line x1="80" y1="487" x2="572" y2="487" stroke="#2f6b95" stroke-width="2"/>
+  <line x1="584" y1="487" x2="1076" y2="487" stroke="#2f6b95" stroke-width="2"/>
+  <line x1="1088" y1="487" x2="1580" y2="487" stroke="#2f6b95" stroke-width="2"/>
+
+  <!-- Nine skill cards -->
+  <g filter="url(#shadow)">
+    <g transform="translate(92 505)"><rect width="148" height="112" rx="16" fill="#102d41" stroke="#4aa8ff"/><text x="74" y="25" class="skill-num">01</text><text x="74" y="57" class="skill-name">进箱导航</text><text x="74" y="88" class="skill-code">FORK-NAV-01</text></g>
+    <g transform="translate(260 505)"><rect width="148" height="112" rx="16" fill="#102d41" stroke="#4aa8ff"/><text x="74" y="25" class="skill-num">02</text><text x="74" y="57" class="skill-name">精准对位</text><text x="74" y="88" class="skill-code">FORK-NAV-03</text></g>
+    <g transform="translate(428 505)"><rect width="148" height="112" rx="16" fill="#102d41" stroke="#4aa8ff"/><text x="74" y="25" class="skill-num">03</text><text x="74" y="57" class="skill-name">栈板识别</text><text x="74" y="88" class="skill-code">FORK-PER-01</text></g>
+    <g transform="translate(596 505)"><rect width="148" height="112" rx="16" fill="#102d41" stroke="#4aa8ff"/><text x="74" y="25" class="skill-num">04</text><text x="74" y="57" class="skill-name">货叉插入</text><text x="74" y="88" class="skill-code">FORK-OP-01</text></g>
+    <g transform="translate(764 505)"><rect width="148" height="112" rx="16" fill="#102d41" stroke="#4aa8ff"/><text x="74" y="25" class="skill-num">05</text><text x="74" y="57" class="skill-name">门架起升</text><text x="74" y="88" class="skill-code">FORK-OP-02</text></g>
+    <g transform="translate(932 505)"><rect width="148" height="112" rx="16" fill="#102d41" stroke="#4aa8ff"/><text x="74" y="25" class="skill-num">06</text><text x="74" y="57" class="skill-name">货叉倾斜</text><text x="74" y="88" class="skill-code">FORK-OP-03</text></g>
+    <g transform="translate(1100 505)"><rect width="148" height="112" rx="16" fill="#102d41" stroke="#4aa8ff"/><text x="74" y="25" class="skill-num">07</text><text x="74" y="57" class="skill-name">月台区导航</text><text x="74" y="88" class="skill-code">FORK-NAV-02</text></g>
+    <g transform="translate(1268 505)"><rect width="148" height="112" rx="16" fill="#102d41" stroke="#4aa8ff"/><text x="74" y="25" class="skill-num">08</text><text x="74" y="57" class="skill-name">传送带对接</text><text x="74" y="88" class="skill-code">FORK-OP-05</text></g>
+    <g transform="translate(1436 505)"><rect width="148" height="112" rx="16" fill="#102d41" stroke="#4aa8ff"/><text x="74" y="25" class="skill-num">09</text><text x="74" y="57" class="skill-name">栈板放置</text><text x="74" y="88" class="skill-code">FORK-OP-04</text></g>
+  </g>
+  <g stroke="#4aa8ff" stroke-width="3" marker-end="url(#arrowBlue)">
+    <line x1="242" y1="561" x2="254" y2="561"/><line x1="410" y1="561" x2="422" y2="561"/>
+    <line x1="578" y1="561" x2="590" y2="561"/><line x1="746" y1="561" x2="758" y2="561"/>
+    <line x1="914" y1="561" x2="926" y2="561"/><line x1="1082" y1="561" x2="1094" y2="561"/>
+    <line x1="1250" y1="561" x2="1262" y2="561"/><line x1="1418" y1="561" x2="1430" y2="561"/>
+  </g>
+  <rect x="1620" y="510" width="194" height="102" rx="34" fill="#3dd48a"/>
+  <text x="1717" y="552" class="terminal">COMPLETED · 9/9</text>
+  <text x="1717" y="584" class="terminal">66.25 s</text>
+  <line x1="1586" y1="561" x2="1610" y2="561" stroke="#3dd48a" stroke-width="5" marker-end="url(#arrowCyan)"/>
+
+  <!-- Recovery lane -->
+  <rect x="80" y="680" width="1760" height="190" rx="24" fill="#211d16" stroke="#ffb23e" stroke-width="2"/>
+  <rect x="100" y="700" width="120" height="36" rx="18" fill="#ffb23e"/>
+  <text x="160" y="725" class="terminal">自动恢复</text>
+  <text x="240" y="726" class="lane-sub">首次失败 → 更新世界状态 → 有限预算修正 → 返回失败节点重新验证</text>
+  <g filter="url(#shadow)">
+    <rect x="110" y="762" width="300" height="72" rx="16" fill="#162535" stroke="#ffb23e"/>
+    <rect x="480" y="762" width="300" height="72" rx="16" fill="#162535" stroke="#ffb23e"/>
+    <rect x="850" y="762" width="300" height="72" rx="16" fill="#133746" stroke="#3bd5e8"/>
+    <rect x="1220" y="762" width="300" height="72" rx="16" fill="#162535" stroke="#ffb23e"/>
+    <text x="260" y="793" class="node-title">首次对位失败</text><text x="260" y="820" class="node-sub">横向偏移超过阈值</text>
+    <text x="630" y="793" class="node-title">FB-01 横向修正</text><text x="630" y="820" class="node-sub">恢复预算 1 次</text>
+    <text x="1000" y="793" class="node-title">世界模型更新</text><text x="1000" y="820" class="node-sub">丢弃过期目标参数</text>
+    <text x="1370" y="793" class="node-title">返回 02 精准对位</text><text x="1370" y="820" class="node-sub">更新世界状态后重新验证</text>
+  </g>
+  <line x1="412" y1="798" x2="470" y2="798" stroke="#ffb23e" stroke-width="4" marker-end="url(#arrowAmber)"/>
+  <line x1="782" y1="798" x2="840" y2="798" stroke="#3bd5e8" stroke-width="4" marker-end="url(#arrowCyan)"/>
+  <line x1="1152" y1="798" x2="1210" y2="798" stroke="#ffb23e" stroke-width="4" marker-end="url(#arrowAmber)"/>
+  <path d="M1370 760 V654 H334 V624" fill="none" stroke="#3bd5e8" stroke-width="3" stroke-dasharray="10 8" marker-end="url(#arrowCyan)"/>
+  <rect x="1570" y="755" width="244" height="86" rx="30" fill="#3dd48a"/>
+  <text x="1692" y="791" class="terminal">恢复后 COMPLETED</text>
+  <text x="1692" y="820" class="terminal">9/9 · 77.25 s</text>
+  <line x1="1522" y1="798" x2="1560" y2="798" stroke="#3dd48a" stroke-width="5" marker-end="url(#arrowCyan)"/>
+
+  <!-- Intervention lane -->
+  <rect x="80" y="900" width="1760" height="190" rx="24" fill="#251820" stroke="#ff5d68" stroke-width="2"/>
+  <rect x="100" y="920" width="120" height="36" rx="18" fill="#ff5d68"/>
+  <text x="160" y="945" class="terminal">安全介入</text>
+  <text x="240" y="946" class="lane-sub">恢复预算耗尽时，安全停车优先于继续试错</text>
+  <g filter="url(#shadow)">
+    <rect x="110" y="982" width="300" height="72" rx="16" fill="#162535" stroke="#ff5d68"/>
+    <rect x="480" y="982" width="300" height="72" rx="16" fill="#162535" stroke="#ffb23e"/>
+    <rect x="850" y="982" width="300" height="72" rx="16" fill="#162535" stroke="#ffb23e"/>
+    <rect x="1220" y="982" width="300" height="72" rx="16" fill="#162535" stroke="#ff5d68"/>
+    <text x="260" y="1013" class="node-title">连续识别失败</text><text x="260" y="1040" class="node-sub">遮挡场景注入</text>
+    <text x="630" y="1013" class="node-title">FB-02 切换观察位姿</text><text x="630" y="1040" class="node-sub">两个不同视角重试</text>
+    <text x="1000" y="1013" class="node-title">世界模型再评估</text><text x="1000" y="1040" class="node-sub">风险高 / 不确定性超限</text>
+    <text x="1370" y="1013" class="node-title">FB-07 箱外安全停车</text><text x="1370" y="1040" class="node-sub">速度 |v| ≤ 0.01 m/s</text>
+  </g>
+  <line x1="412" y1="1018" x2="470" y2="1018" stroke="#ffb23e" stroke-width="4" marker-end="url(#arrowAmber)"/>
+  <line x1="782" y1="1018" x2="840" y2="1018" stroke="#ffb23e" stroke-width="4" marker-end="url(#arrowAmber)"/>
+  <line x1="1152" y1="1018" x2="1210" y2="1018" stroke="#ff5d68" stroke-width="4" marker-end="url(#arrowRed)"/>
+  <rect x="1570" y="975" width="244" height="86" rx="30" fill="#ff5d68"/>
+  <text x="1692" y="1011" class="terminal">HUMAN REQUIRED</text>
+  <text x="1692" y="1040" class="terminal">36.0 s</text>
+  <line x1="1522" y1="1018" x2="1560" y2="1018" stroke="#ff5d68" stroke-width="5" marker-end="url(#arrowRed)"/>
+
+  <!-- Legend -->
+  <rect x="80" y="1125" width="1760" height="90" rx="20" fill="#0a1a27" stroke="#27475a"/>
+  <circle cx="125" cy="1170" r="9" fill="#4aa8ff"/><text x="145" y="1177" class="legend">正常技能</text>
+  <circle cx="315" cy="1170" r="9" fill="#3bd5e8"/><text x="335" y="1177" class="legend">世界模型更新</text>
+  <circle cx="565" cy="1170" r="9" fill="#ffb23e"/><text x="585" y="1177" class="legend">Fallback / 恢复</text>
+  <circle cx="825" cy="1170" r="9" fill="#3dd48a"/><text x="845" y="1177" class="legend">验证完成</text>
+  <circle cx="1015" cy="1170" r="9" fill="#ff5d68"/><text x="1035" y="1177" class="legend">安全停车 / 人工介入</text>
+  <text x="1340" y="1177" class="legend">三场景来自正式事件链与录像：normal / recovery / intervention</text>
+  <text x="80" y="1255" class="lane-sub">安全原则：失败后不沿用过期意图；预算耗尽不继续试错；人工接管是受控终态，不伪装成成功。</text>
+</svg>
