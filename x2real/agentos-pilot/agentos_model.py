@@ -45,6 +45,19 @@ def validate_actions(actions, state):
     return actions
 
 
+def bound_predicted_grippers(actions):
+    """Match ManaEnv's normalized gripper saturation, preserving arm motion.
+
+    Flow sampling may exceed [0,1]. The simulator clips these channels before
+    scaling to actuator units; applying the same operation here is not recovery.
+    Keep the observed first row unchanged and let validation reject nonfinites.
+    """
+    actions = np.array(actions, dtype=np.float32, copy=True)
+    if actions.shape == (33,14) and np.isfinite(actions).all():
+        actions[1:, [6,13]] = np.clip(actions[1:, [6,13]], 0, 1)
+    return actions
+
+
 class ShadowWorld:
     def __init__(self, path):
         checkpoint = torch.load(path, map_location='cpu', weights_only=True)
@@ -150,7 +163,11 @@ class Model(PolicyModel):
         candidate = self.base.infer_actions()
         skill = 'policy_chunk'
         try:
-            action = validate_actions(candidate, state)
+            bounded = bound_predicted_grippers(candidate)
+            action = validate_actions(bounded, state)
+            if not np.array_equal(candidate, bounded):
+                self._emit('gripper_saturation', raw_min=float(np.min(candidate[1:,[6,13]])),
+                           raw_max=float(np.max(candidate[1:,[6,13]])))
         except ValueError as error:
             if self.fallback_count >= 2:
                 raise RuntimeError('Action gate rejected policy after two bounded retries') from error

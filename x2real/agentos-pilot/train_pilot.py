@@ -52,13 +52,21 @@ def main():
         torch.manual_seed(4242)
         trainer.val_loop()
         trainer.fit()
+        completed = trainer.global_step
+        # Upstream saves zero-based step indices and adds one when resuming.
+        # fit() has already incremented the counter after the final update.
+        trainer.global_step = completed - 1
         trainer.save_checkpoint(0, trainer.global_step)
+        trainer.global_step = completed
         torch.manual_seed(4242)
         trainer.val_loop()
         result = {'optimizer_steps': trainer.global_step,
-                  'checkpoint': str(ROOT/f'outputs/action-pilot/0_{trainer.global_step}'),
+                  'checkpoint': str(ROOT/f'outputs/action-pilot/0_{completed-1}'),
                   'task_success_rate': None, 'platform_submitted': False}
         (ROOT/'TRAIN_COMPLETE.json').write_text(json.dumps(result, indent=2))
+        import subprocess
+        import sys
+        subprocess.run([sys.executable,str(ROOT/'finalize_checkpoint.py')],check=True)
         print('TRAIN_COMPLETE', json.dumps(result), flush=True)
     finally:
         cleanup_distributed()

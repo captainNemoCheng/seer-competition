@@ -3,7 +3,7 @@ model:
   class: Model
 server:
   host: 127.0.0.1
-  port: 8001
+  port: 8002
   session_mode: exclusive
 metadata:
   supported_schema_pairs:

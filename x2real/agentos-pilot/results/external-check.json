@@ -1,0 +1,32 @@
+{
+  "external_lifecycle": "passed",
+  "shape": [
+    33,
+    14
+  ],
+  "finite": true,
+  "inference_roundtrip_seconds": 4.9209405000001425,
+  "metadata": {
+    "supported_schema_pairs": [
+      {
+        "observation_schema": "bimanual_rgb_ee@1",
+        "action_schema": "bimanual_ee_absolute@1",
+        "embodiment_constraints": [
+          "ex001_6r@1"
+        ]
+      }
+    ],
+    "action_dim": 14,
+    "action_mode": "ik_eef_abs",
+    "action_horizon": 33,
+    "gripper_convention": "normalized_01",
+    "policy_name": "wallx",
+    "session_mode": "exclusive",
+    "server": "policy_space",
+    "version": 2,
+    "protocol": "policy_space",
+    "protocol_version": "2",
+    "server_instance_id": "c2b7fedd8c9d47608f24d94a095ba339"
+  },
+  "platform_task_score": null
+}

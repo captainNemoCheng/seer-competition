@@ -10,3 +10,4 @@ outputs/
 weights/
 hf/
 world_features.npz
+.service/

@@ -1,0 +1,17 @@
+{
+  "optimizer_steps": 64,
+  "train_episodes": 270,
+  "heldout_episodes": 30,
+  "validation_frames": 32,
+  "initial_validation_loss": 0.1088739141341648,
+  "final_validation_loss": 0.02445196547961359,
+  "trainable_parameters": 399860736,
+  "platform_submitted": false,
+  "task_success_rate": null,
+  "checkpoint_export": {
+    "directory": "0_64",
+    "zero_based_step": 63,
+    "inference_max_length": 2048,
+    "trained_tensors_modified": false
+  }
+}
