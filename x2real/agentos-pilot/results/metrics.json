@@ -1,0 +1,32 @@
+{
+  "data_revision": "5a741385f9f196073cfe163b0f25033025e383a6",
+  "train_episodes": 240,
+  "validation_episodes": 30,
+  "test_episodes": 30,
+  "test_transitions": 313,
+  "horizon_seconds": 1.6,
+  "persistence_baseline": {
+    "visual_standardized_mse": 1.1369110345840454,
+    "eef_position_rmse_m": 0.0666372999548912,
+    "gripper_mae": 0.2572297751903534
+  },
+  "learned_predictor": {
+    "visual_standardized_mse": 0.6849023699760437,
+    "eef_position_rmse_m": 0.0127765703946352,
+    "gripper_mae": 0.05073317512869835
+  },
+  "mean_ensemble_std": 0.09649954736232758,
+  "platform_success_rate": null,
+  "deployment_mode": "shadow_only",
+  "limitations": [
+    "single bottle task",
+    "no grasp-success or collision labels",
+    "offline held-out trajectory test, not closed-loop evaluation",
+    "ensemble disagreement is not calibrated confidence"
+  ],
+  "last_command_state_static_visual_baseline": {
+    "visual_standardized_mse": 1.1369110345840454,
+    "eef_position_rmse_m": 0.002094684401527047,
+    "gripper_mae": 0.000427387683885172
+  }
+}

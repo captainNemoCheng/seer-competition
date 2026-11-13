@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pt
+*.pth
+*.safetensors
+*.log
+.venv/
+data/
+outputs/
+weights/
+hf/
+world_features.npz
