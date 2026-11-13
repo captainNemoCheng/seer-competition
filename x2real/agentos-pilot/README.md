@@ -77,6 +77,21 @@ bash run_policy.sh serve
 
 **尚未登记自变量模型或取得平台分数。** 当前对话不能访问已登录浏览器，平台账户操作仍待完成。临时 WSS 服务依赖 Pod 和隧道进程持续运行，不能停止 Pod 后继续评测。
 
+## 权重备份和恢复
+
+`pack_changes.py` 与固定 revision 的公开基础权重逐张量比较，保存全部不同张量及完整形状/类型清单；不仅按可训练参数名筛选，因此也保留训练初始化时扩展或改变的冻结张量。843 个张量逐一重建后与完整训练检查点完全相等。该备份为无损权重备份，不含优化器状态；完整训练检查点和优化器仍在 Pod。
+
+`changed.safetensors.zst` 解压后，可用以下命令生成完整推理权重；需要约 18 GB 的 CPU 内存及输出磁盘空间，并把原检查点的配置、tokenizer 和归一化文件放到同一目录。
+
+```bash
+zstd -d changed.safetensors.zst
+python restore_changes.py --base weights/model.safetensors \
+  --changes changed.safetensors --manifest manifest.json \
+  --output restored/model.safetensors
+```
+
+脚本校验基础权重的 SHA256，不覆盖已有输出。公开 Git 只放代码和实验记录，模型权重与私有服务地址不提交到仓库。
+
 ## 后续验收
 
 按原构想继续实现任务相关的语义状态核验、观测驱动的技能编排、失败数据采集、有限恢复与失败记忆，再比较基础策略、微调策略、恢复模块和预测模块的闭环消融结果。当前成果仅覆盖上述已验证组件，不承诺所有题目或所有硬件。

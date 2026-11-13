@@ -1,0 +1,7 @@
+{
+  "verification": "all reconstructed tensors exactly equal saved training checkpoint",
+  "tensors": 843,
+  "changed_parameters": 1143762024,
+  "unchanged_parameters": 3341996288,
+  "optimizer_backed_up": false
+}
