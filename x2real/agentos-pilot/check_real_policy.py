@@ -12,6 +12,12 @@ ROOT=Path('/workspace/x2real-training')
 
 
 def observation():
+    cached=ROOT/'outputs/heldout-observation.npz'
+    if cached.exists():
+        sample=np.load(cached)
+        return {'images':{k:sample[k] for k in ('camera_front','camera_left','camera_right')},
+                'state':{k:sample[k] for k in ('follow1_pos','follow2_pos')},
+                'instruction':str(sample['instruction']),'step':0,'episode_id':'heldout-interface-check'}
     data=LeRobotDataset('x2real/bottle-v3',root=str(ROOT/'data/bottle-v3'),episodes=[270],video_backend='pyav')
     sample=data[0]
     vector=sample['observation.state'].numpy()

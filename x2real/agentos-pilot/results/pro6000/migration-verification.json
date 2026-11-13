@@ -1,0 +1,7 @@
+{
+  "restored_tensors": 843,
+  "exact_match": true,
+  "new_training_steps": 0,
+  "source_training_steps": 64,
+  "optimizer_restored": false
+}
